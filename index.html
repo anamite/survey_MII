@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InOnam 2025 - Survey Results Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 10px;
+            font-size: 16px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ff6b6b, #ffa500);
+            color: white;
+            padding: 25px 15px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 25px 15px;
+            background: #f8f9fa;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px 15px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .stat-number {
+            font-size: 2.2em;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+        
+        .rating-breakdown {
+            padding: 25px 15px;
+            background: white;
+        }
+        
+        .rating-breakdown h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.4em;
+            font-weight: 700;
+        }
+        
+        .rating-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            gap: 10px;
+            min-height: 35px;
+        }
+        
+        .rating-label {
+            min-width: 70px;
+            font-weight: 600;
+            font-size: 0.9em;
+            flex-shrink: 0;
+        }
+        
+        .bar-container {
+            flex: 1;
+            background: #e9ecef;
+            height: 28px;
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .bar-fill {
+            height: 100%;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.8em;
+            transition: width 0.8s ease-in-out;
+        }
+        
+        .reviews-section {
+            padding: 25px 15px;
+            background: #f8f9fa;
+        }
+        
+        .reviews-section h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+            font-size: 1.4em;
+            font-weight: 700;
+        }
+        
+        .review-card {
+            background: white;
+            margin-bottom: 15px;
+            padding: 18px 15px;
+            border-radius: 12px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid #667eea;
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            gap: 10px;
+        }
+        
+        .stars {
+            color: #ffa500;
+            font-size: 1.1em;
+            flex-shrink: 0;
+        }
+        
+        .review-text {
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            font-size: 0.95em;
+        }
+        
+        .review-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8em;
+            color: #777;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .participation-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7em;
+            font-weight: 600;
+            text-align: center;
+            min-width: 80px;
+        }
+        
+        .will-participate {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .wont-participate {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .source-tag {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 0.75em;
+            font-weight: 500;
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            body {
+                font-size: 15px;
+            }
+            
+            .header {
+                padding: 20px 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .header p {
+                font-size: 1em;
+            }
+            
+            .stats-grid {
+                padding: 20px 15px;
+                gap: 12px;
+            }
+            
+            .stat-card {
+                padding: 15px 10px;
+                min-height: 85px;
+            }
+            
+            .stat-number {
+                font-size: 1.8em;
+            }
+            
+            .stat-label {
+                font-size: 0.8em;
+            }
+            
+            .rating-breakdown,
+            .reviews-section {
+                padding: 20px 15px;
+            }
+            
+            .rating-breakdown h3,
+            .reviews-section h3 {
+                font-size: 1.2em;
+            }
+            
+            .rating-bar {
+                margin-bottom: 10px;
+                min-height: 30px;
+            }
+            
+            .rating-label {
+                min-width: 60px;
+                font-size: 0.85em;
+            }
+            
+            .bar-container {
+                height: 24px;
+            }
+            
+            .bar-fill {
+                font-size: 0.75em;
+            }
+            
+            .review-card {
+                padding: 15px 12px;
+                margin-bottom: 12px;
+            }
+            
+            .review-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .stars {
+                font-size: 1em;
+            }
+            
+            .review-text {
+                font-size: 0.9em;
+            }
+            
+            .review-meta {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .participation-badge {
+                font-size: 0.65em;
+                padding: 3px 6px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+                font-size: 14px;
+            }
+            
+            .container {
+                border-radius: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.6em;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                padding: 15px 10px;
+            }
+            
+            .stat-card {
+                padding: 12px 8px;
+                min-height: 75px;
+            }
+            
+            .stat-number {
+                font-size: 1.6em;
+            }
+            
+            .stat-label {
+                font-size: 0.75em;
+            }
+            
+            .rating-breakdown,
+            .reviews-section {
+                padding: 15px 10px;
+            }
+            
+            .review-card {
+                padding: 12px 10px;
+            }
+        }
+        
+        /* Very small screens */
+        @media (max-width: 360px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-card {
+                min-height: 65px;
+            }
+            
+            .stat-number {
+                font-size: 1.4em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>InOnam 2025</h1>
+            <p>Event Feedback & Survey Results</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">18</div>
+                <div class="stat-label">Total<br>Responses</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4.1</div>
+                <div class="stat-label">Average<br>Rating</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">72%</div>
+                <div class="stat-label">Will Participate<br>2026</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">67%</div>
+                <div class="stat-label">Heard via<br>WhatsApp</div>
+            </div>
+        </div>
+        
+        <div class="rating-breakdown">
+            <h3>Rating Distribution</h3>
+            <div class="rating-bar">
+                <div class="rating-label">5 Stars</div>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: 56%; background: #28a745;">10 (56%)</div>
+                </div>
+            </div>
+            <div class="rating-bar">
+                <div class="rating-label">4 Stars</div>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: 11%; background: #17a2b8;">2 (11%)</div>
+                </div>
+            </div>
+            <div class="rating-bar">
+                <div class="rating-label">3 Stars</div>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: 11%; background: #ffc107; color: #000;">2 (11%)</div>
+                </div>
+            </div>
+            <div class="rating-bar">
+                <div class="rating-label">2 Stars</div>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: 11%; background: #fd7e14;">2 (11%)</div>
+                </div>
+            </div>
+            <div class="rating-bar">
+                <div class="rating-label">1 Star</div>
+                <div class="bar-container">
+                    <div class="bar-fill" style="width: 11%; background: #dc3545;">2 (11%)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="reviews-section">
+            <h3>Individual Reviews</h3>
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <span class="participation-badge will-participate">Will Join 2026</span>
+                </div>
+                <div class="review-text">"Vishakha was awesome"</div>
+                <div class="review-meta">
+                    <span>Source: <span class="source-tag">Friend Referral</span></span>
+                    <span>Contact: Vishakha Vijaykumar</span>
+                </div>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <span class="participation-badge will-participate">Will Join 2026</span>
+                </div>
+                <div class="review-text">"Super Coordination. Great food!"</div>
+                <div class="review-meta">
+                    <span>Source: <span class="source-tag">Friends</span></span>
+                    <span>Platform: Mobile Chrome</span>
+                </div>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <span class="participation-badge will-participate">Will Join 2026</span>
+                </div>
+                <div class="review-text">"Perfectly organised, everything went well, except the shortage of rice"</div>
+                <div class="review-meta">
+                    <span>Source: <span class="source-tag">WhatsApp Group</span></span>
+                    <span>Platform: Desktop Chrome</span>
+                </div>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="stars">⭐⭐⭐⭐</div>
+                    <span class="participation-badge will-participate">Will Join 2026</span>
+                </div>
+                <div class="review-text">"Food and games were good. Food planning could have been better. The anchors could have addressed the audience and requested them to keep silence during the performances."</div>
+                <div class="review-meta">
+                    <span>Source: <span class="source-tag">WhatsApp Group</span></span>
+                    <span>Platform: Mobile Chrome</span>
+                </div>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="stars">⭐⭐⭐</div>
+                    <span class="participation-badge will-participate">Will Join 2026</span>
+                </div>
+                <div class="review-text">"Not many events which engaged the whole crowd."</div>
+                <div class="review-meta">
+                    <span>Source: <span class="source-tag">WhatsApp Group</span></span>
+                    <span>Platform: Desktop Chrome</span>
+                </div>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="stars">⭐</div>
+                    <span class="participation-badge wont-participate">Won't Join 2026</span>
+                </div>
+                <div class="review-text">"Why were mainly white people called on stage? This was seriously cringe to watch! Onam is an Indian festival but why them to light the lamp?"</div>
+                <div class="review-meta">
+                    <span>Platform: Mobile Safari</span>
+                </div>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <span class="participation-badge will-participate">Will Join 2026</span>
+                </div>
+                <div class="review-text">"Everything was good but timing is really to be respected. Lunch at 1pm is too late. Next time at 12 or 12:30 is good."</div>
+                <div class="review-meta">
+                    <span>Source: <span class="source-tag">WhatsApp Group</span></span>
+                    <span>Platform: Mobile Safari</span>
+                </div>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="stars">⭐⭐</div>
+                    <span class="participation-badge wont-participate">Won't Join 2026</span>
+                </div>
+                <div class="review-text">"Food wasn't served well, had to wait 10-15 mins for rice. Lot of chaos!"</div>
+                <div class="review-meta">
+                    <span>Contact: jahsh@gmx.de</span>
+                </div>
+            </div>
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <span class="participation-badge will-participate">Will Join 2026</span>
+                </div>
+                <div class="review-text">"It was amazing! So welcoming and new"</div>
+                <div class="review-meta">
+                    <span>Source: <span class="source-tag">Instagram</span></span>
+                    <span>Contact: Tahoor</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
