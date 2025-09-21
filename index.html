@@ -123,7 +123,6 @@
             height: 28px;
             border-radius: 14px;
             overflow: hidden;
-            position: relative;
         }
         
         .bar-fill {
@@ -135,7 +134,6 @@
             color: white;
             font-weight: 600;
             font-size: 0.8em;
-            transition: width 0.8s ease-in-out;
         }
         
         .reviews-section {
@@ -355,7 +353,6 @@
             }
         }
         
-        /* Very small screens */
         @media (max-width: 360px) {
             .stats-grid {
                 grid-template-columns: 1fr;
@@ -432,8 +429,9 @@
         </div>
         
         <div class="reviews-section">
-            <h3>Individual Reviews</h3>
+            <h3>All Individual Reviews (18 Total)</h3>
             
+            <!-- Review 1 -->
             <div class="review-card">
                 <div class="review-header">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
@@ -442,10 +440,12 @@
                 <div class="review-text">"Vishakha was awesome"</div>
                 <div class="review-meta">
                     <span>Source: <span class="source-tag">Friend Referral</span></span>
-                    <span>Contact: Vishakha Vijaykumar</span>
+                    <span>Contact: Vishakha Vijaykumar; rathodvishakha19@gmail.com</span>
+                    <span>Platform: Desktop Firefox</span>
                 </div>
             </div>
             
+            <!-- Review 2 -->
             <div class="review-card">
                 <div class="review-header">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
@@ -454,10 +454,24 @@
                 <div class="review-text">"Super Coordination. Great food!"</div>
                 <div class="review-meta">
                     <span>Source: <span class="source-tag">Friends</span></span>
-                    <span>Platform: Mobile Chrome</span>
+                    <span>Platform: Mobile Chrome (Android)</span>
                 </div>
             </div>
             
+            <!-- Review 3 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <span class="participation-badge will-participate">Will Join 2026</span>
+                </div>
+                <div class="review-text">"Super"</div>
+                <div class="review-meta">
+                    <span>Source: <span class="source-tag">WhatsApp Group</span></span>
+                    <span>Platform: Mobile Chrome (iOS)</span>
+                </div>
+            </div>
+            
+            <!-- Review 4 -->
             <div class="review-card">
                 <div class="review-header">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
@@ -466,22 +480,24 @@
                 <div class="review-text">"Perfectly organised, everything went well, except the shortage of rice"</div>
                 <div class="review-meta">
                     <span>Source: <span class="source-tag">WhatsApp Group</span></span>
-                    <span>Platform: Desktop Chrome</span>
+                    <span>Platform: Desktop Chrome (Windows)</span>
                 </div>
             </div>
             
+            <!-- Review 5 -->
             <div class="review-card">
                 <div class="review-header">
                     <div class="stars">⭐⭐⭐⭐</div>
                     <span class="participation-badge will-participate">Will Join 2026</span>
                 </div>
-                <div class="review-text">"Food and games were good. Food planning could have been better. The anchors could have addressed the audience and requested them to keep silence during the performances."</div>
+                <div class="review-text">"Food and games were good. Food planning could have been better. The anchors could have addressed the audience and requested them to keep silence during the performances, this would have encouraged the people performing on the stage."</div>
                 <div class="review-meta">
                     <span>Source: <span class="source-tag">WhatsApp Group</span></span>
-                    <span>Platform: Mobile Chrome</span>
+                    <span>Platform: Mobile Chrome (Android)</span>
                 </div>
             </div>
             
+            <!-- Review 6 -->
             <div class="review-card">
                 <div class="review-header">
                     <div class="stars">⭐⭐⭐</div>
@@ -490,21 +506,24 @@
                 <div class="review-text">"Not many events which engaged the whole crowd."</div>
                 <div class="review-meta">
                     <span>Source: <span class="source-tag">WhatsApp Group</span></span>
-                    <span>Platform: Desktop Chrome</span>
+                    <span>Platform: Desktop Chrome (Windows)</span>
                 </div>
             </div>
             
+            <!-- Review 7 -->
             <div class="review-card">
                 <div class="review-header">
                     <div class="stars">⭐</div>
                     <span class="participation-badge wont-participate">Won't Join 2026</span>
                 </div>
-                <div class="review-text">"Why were mainly white people called on stage? This was seriously cringe to watch! Onam is an Indian festival but why them to light the lamp?"</div>
+                <div class="review-text">"Why were mainly white people called on stage? This was seriously cringe to watch! Onam is an Indian festival but why them to light the lamp? I cannot understand."</div>
                 <div class="review-meta">
-                    <span>Platform: Mobile Safari</span>
+                    <span>Platform: Mobile Safari (iOS)</span>
+                    <span>Note: Survey marked as incomplete</span>
                 </div>
             </div>
             
+            <!-- Review 8 -->
             <div class="review-card">
                 <div class="review-header">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
@@ -513,10 +532,11 @@
                 <div class="review-text">"Everything was good but timing is really to be respected. Lunch at 1pm is too late. Next time at 12 or 12:30 is good."</div>
                 <div class="review-meta">
                     <span>Source: <span class="source-tag">WhatsApp Group</span></span>
-                    <span>Platform: Mobile Safari</span>
+                    <span>Platform: Mobile Safari (iOS)</span>
                 </div>
             </div>
             
+            <!-- Review 9 -->
             <div class="review-card">
                 <div class="review-header">
                     <div class="stars">⭐⭐</div>
@@ -524,10 +544,12 @@
                 </div>
                 <div class="review-text">"Food wasn't served well, had to wait 10-15 mins for rice. Lot of chaos!"</div>
                 <div class="review-meta">
-                    <span>Contact: jahsh@gmx.de</span>
+                    <span>Contact: Djsjd; jahsh@gmx.de</span>
+                    <span>Platform: Mobile Chrome (iOS)</span>
                 </div>
             </div>
             
+            <!-- Review 10 -->
             <div class="review-card">
                 <div class="review-header">
                     <div class="stars">⭐⭐⭐⭐⭐</div>
@@ -536,9 +558,118 @@
                 <div class="review-text">"It was amazing! So welcoming and new"</div>
                 <div class="review-meta">
                     <span>Source: <span class="source-tag">Instagram</span></span>
-                    <span>Contact: Tahoor</span>
+                    <span>Contact: Tahoor; tahoor.najeeb@gmail.com</span>
+                    <span>Platform: Mobile Safari (iOS)</span>
                 </div>
             </div>
+            
+            <!-- Review 11 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="stars">⭐⭐⭐⭐</div>
+                    <span class="participation-badge will-participate">Will Join 2026</span>
+                </div>
+                <div class="review-text">"Everything was pretty great..the food, the organizations, time management, games and programs everything was very entertaining and enjoyable. Even in a crisis situation (with the rice shortage..) I think it was handled pretty amazingly and kudos to the whole team for the effort. No pointers..keep going :)"</div>
+                <div class="review-meta">
+                    <span>Source: <span class="source-tag">WhatsApp Group</span></span>
+                    <span>Platform: Mobile Chrome (Android)</span>
+                </div>
+            </div>
+            
+            <!-- Review 12 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <span class="participation-badge will-participate">Will Join 2026</span>
+                </div>
+                <div class="review-text">"Had great time"</div>
+                <div class="review-meta">
+                    <span>Source: <span class="source-tag">Posters</span></span>
+                    <span>Platform: GSA (iOS)</span>
+                </div>
+            </div>
+            
+            <!-- Review 13 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <span class="participation-badge will-participate">Will Join 2026</span>
+                </div>
+                <div class="review-text">"Just had an amazing Onam celebration"</div>
+                <div class="review-meta">
+                    <span>Source: <span class="source-tag">WhatsApp Group</span></span>
+                    <span>Platform: Mobile Safari (iOS)</span>
+                </div>
+            </div>
+            
+            <!-- Review 14 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="stars">⭐</div>
+                    <span class="participation-badge wont-participate">Won't Join 2026</span>
+                </div>
+                <div class="review-text">"Probably the food was not enough and we were left with very little sadya and was not filling. Disappointed"</div>
+                <div class="review-meta">
+                    <span>Source: <span class="source-tag">Instagram</span></span>
+                    <span>Contact: Not interested again</span>
+                    <span>Platform: Mobile Chrome (iOS)</span>
+                </div>
+            </div>
+            
+            <!-- Review 15 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="stars">⭐⭐</div>
+                    <span class="participation-badge wont-participate">Won't Join 2026</span>
+                </div>
+                <div class="review-text">"Fun games and nice decorations"</div>
+                <div class="review-meta">
+                    <span>Source: <span class="source-tag">Friend Referral</span></span>
+                    <span>Platform: Mobile Chrome (iOS)</span>
+                </div>
+            </div>
+            
+            <!-- Review 16 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <span class="participation-badge will-participate">Will Join 2026</span>
+                </div>
+                <div class="review-text">"Great Performance! Very good organization! Moderation was on a very high Level, very sympathic and with clear explanation of tradition, what is very important."</div>
+                <div class="review-meta">
+                    <span>Source: <span class="source-tag">Colleague (Vishakha Rathod)</span></span>
+                    <span>Contact: Aida; aida1313@hotmail.com</span>
+                    <span>Platform: Mobile Safari (iOS)</span>
+                </div>
+            </div>
+            
+            <!-- Review 17 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <span class="participation-badge will-participate">Will Join 2026</span>
+                </div>
+                <div class="review-text">"The entire event was very well organised. We had so much fun. Would love to join again next year!"</div>
+                <div class="review-meta">
+                    <span>Source: <span class="source-tag">Friend Referral</span></span>
+                    <span>Contact: Sushma Ragi; sush20111998@gmail.com</span>
+                    <span>Platform: Samsung Internet (Android)</span>
+                </div>
+            </div>
+            
+            <!-- Review 18 -->
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="stars">⭐⭐⭐</div>
+                    <span class="participation-badge will-participate">Will Join 2026</span>
+                </div>
+                <div class="review-text">"All the programs were excellent — the timings, coordination, and overall flow were very well managed, keeping everyone engaged throughout.👏👏 The only concern I had was with the food. The curries were truly delicious, but having them with basmati rice didn't give the complete Onam Sadya experience. Since the traditional sadya is one of the main reasons for participating, it felt a little incomplete🥺🥺 I sincerely hope that next time, traditional rice can be served to make the experience even more authentic.🙂 Thank you once again for organizing such a wonderful and memorable celebration!😇"</div>
+                <div class="review-meta">
+                    <span>Source: <span class="source-tag">WhatsApp Group</span></span>
+                    <span>Platform: GSA (iOS)</span>
+                </div>
+            </div>
+            
         </div>
     </div>
 </body>
